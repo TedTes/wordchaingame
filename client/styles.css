@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+body,h4{
+ font-family: 'Roboto', sans-serif;
+}
+.container{
+    position:relative;
+    background:#2d4059;
+    border:solid black .6px;
+    border-radius:10px;
+    padding:.5em;
+    margin:20px auto;
+    width:330px;
+    height:500px;
+    text-align:center;
+    color:white;
+ }
+ li{
+   list-style:none;
+ }
+ .header > h3{
+    position:absolute;
+    right:0em;
+    font-size:.9em;
+    top:1em;
+    right:.9em;
+} 
+  .join-form{
+      margin-top:150px;
+  }
+  .chain-form,.join-form{
+   position:relative;
+    display:flex;
+    flex-direction: column;
+    margin:140px auto;
+    padding-top:4em;
+    align-items: center;
+    width:300px;
+    height:140px;
+
+  }
+.chain-form input,.join-form input{
+    border:solid .5px black;
+    border-radius:10px;
+    outline:none;
+    width:270px;
+    padding:.8em;
+}
+.chain-form label{
+  position:absolute;
+  top:-2em;
+  font-size:2em;
+}
+.chain-form button,.join-form button{
+    width:100px;
+    padding:.5em 1em;
+    border-radius:5px;
+    background:#111d5e;
+    color:white;
+   cursor:pointer;
+}
+  .online-users{
+    display:flex;
+    padding-left:0;
+    padding-right:.7em;
+  }
+
+.timer{
+  text-align:center;
+  border-radius:50%;
+  background:#dbdbdb;
+  font-size:1.8em;
+  margin-right:2em;
+  width:50px;
+  height:50px;
+}
