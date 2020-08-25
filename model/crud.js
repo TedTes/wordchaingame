@@ -4,20 +4,21 @@ const words=require('an-array-of-english-words');
 async function createUser(name){
 const user=new User({name});
 try{
-    await user.save((res)=>{
-        console.log("successfully inserted");
-    });
-}
+   const res= await user.save();
+   return res;
+  }
 catch(err){
     console.log(err);
-      }
+}
 }
 
 async function removeUser(name){
     try{
         const res=await User.deleteOne({name})
     }
-  catch(e){console.log(e)}
+  catch(e){
+      console.log(e)
+    }
 }
 
 async function getOnlineUsers(){
@@ -32,10 +33,9 @@ async function getOnlineUsers(){
 }
 async function updateStatus(word,name){
 
-    if(words.indexOf(word.toLowerCase())===-1){
-      return 'NOT_DICT_WORD'
-       }
-        let currWord=word;
+    if(words.indexOf(word.toLowerCase())===-1) return 'NOT_DICT_WORD'
+    
+     let currWord=word;
     try{
          const status=await Status.findOne({})
            if(status===null) { 
@@ -43,16 +43,17 @@ async function updateStatus(word,name){
                return currWord;
               }
         
-        //    console.log(status.word===currWord);
             if(status.used.indexOf(currWord)!==-1 || status.word===currWord)    
             return 'USED_WORD';
             
          
            if(status.word.substr(-1)!==currWord.substr(0,1)) 
-            return 'INVALID_WORD';
+           return 'INVALID_WORD';
+
+       
          
             const condition= {'word':status.word}
-            const query= {$set:{ word:currWord}, $push:{used:[status.word]}};
+            const query= {$set:{ word:currWord}, $push:{used:status.word}};
  
         await Status.updateOne(condition,query)
         await User.updateOne({'name':name},{$inc:{score:1}})
@@ -69,7 +70,7 @@ async function updateStatus(word,name){
 async function getCurrentWord(){
     const status=await Status.findOne({});
      if(status!==null)return status.word;
-     return '';
+     return;
 }
 async function resetGame(){
     try{
@@ -88,6 +89,7 @@ async function resetScore(name){
     }
 }
 
+
 module.exports={
     createUser,
     updateStatus,
@@ -103,16 +105,3 @@ module.exports={
 
 
 
-
-
-
-
-
-
-
-
-
-
-  // if(res.nModified===0)
-                //  return ("used word");
-                //  if(err)console.log(err);

@@ -5,9 +5,6 @@ const userSchema=new mongoose.Schema({
     name:{
         type:String,
         required:true,
-        createIndexes:{
-             unique:true
-            }
         },
       score:{
         type:Number,
