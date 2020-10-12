@@ -5,37 +5,51 @@ body{
 }
 li{
   list-style:none;
+  margin-right:.5em;
 }
-
-h4{
-  text-transform:uppercase;
-  font-size:1em;
-  opacity:.8;
-  width:200px;
+i{
+  color:#99b898;
+margin-right:.4em;
 }
-.container{
+.container
+{
+    padding:.7em;
     position:relative;
     background:#2d4059;
     border-radius:10px;
-    padding:.5em;
     margin:20px auto;
     width:330px;
     height:500px;
     text-align:center;
     color:white;
  }
- .header{
-   display:flex;
-   justify-content:space-around;
-   }
- .header > h3{
+ header
+ {
    display:flex;
    align-items:center;
+   height:40px;
+  }
+header h3{
     font-size:.9em;
     opacity:.6;
 } 
-  .chain-form,.join-form{
-   position:relative;
+
+header h4{
+  text-transform:uppercase;
+  font-size:1em;
+  margin:0 auto;
+  opacity:.8;
+  width:200px;
+}
+
+.online-users {
+  padding:0;
+  margin-top:1.3em;
+  display:flex;
+}
+
+.chain-form,.join-form{
+    position:relative;
     display:flex;
     flex-direction: column;
     margin:140px auto;
@@ -43,9 +57,8 @@ h4{
     align-items: center;
     width:300px;
     height:140px;
-
-  }
-.chain-form input,.join-form input{
+ }
+input{
     border:solid .5px black;
     border-radius:10px;
     outline:none;
@@ -57,7 +70,7 @@ h4{
   top:-2em;
   font-size:2em;
 }
-.chain-form button,.join-form button{
+button {
     width:100px;
     padding:.5em 1em;
     border-radius:5px;
@@ -65,20 +78,17 @@ h4{
     color:white;
     cursor:pointer;
 }
-  .online-users{
-    display:flex;
-    padding-left:0;
-    padding-right:.7em;
-  }
 
-.timer{
+ .timer
+{
   visibility:hidden;
   display:grid;
   align-items:center;
   border-radius:50%;
+  border:3px #111d5e solid;
   background:#dbdbdb;
   font-size:1.7em;
-  width:50px;
-  height:50px;
+  width:45px;
+  height:45px;
   color:#111d5e;
 }

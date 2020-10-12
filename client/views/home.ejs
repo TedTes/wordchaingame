@@ -1,34 +1,31 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" http-equiv="refresh" content="1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" 
-    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" 
-    crossorigin="anonymous" />
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link rel="stylesheet" href="styles.css">
     <title>Document</title>
 </head>
 <body>
  <div class="container">
-        <div class="header"> 
+          <header>
             <span id="timer" class="timer"></span>
-           <h4>word chain game</h4>
-           <h3><%=name%></h3>
-        </div>
-        <div style="display:flex; flex-direction:column">
-            <ul class="online-users" id="online-users"></ul>
-      
-            <form name="chain-form" id="chain-form" class="chain-form">
-              <label id="word" class="word"></label>
-              <input name="inputWord" id="inputWord" type="text" required autofocus/></br>
+            <h4>word chain game</h4>
+            <h3><%=name%></h3>
+          </header>
+          <ul class="online-users" id="online-users"></ul>
+        <form id="chain-form" class="chain-form">
+              <label id="word"></label>
+              <input name="inputWord" type="text" required autofocus/></br>
               <button>chain</button>
-             </form>
-        </div>
-      
-        </div>
-    
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="./client.js">
+        </form>
+  </div>
+       <script src="/socket.io/socket.io.js"></script>
+       <script src="./client.js">
   </script>
 </body>
 </html>
+
+
+

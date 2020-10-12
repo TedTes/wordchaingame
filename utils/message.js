@@ -1,7 +1,7 @@
 message={ 
-    INVALID_WORD: "invalid word try again!",
+    NOT_CHAINED_WORD: "Not chained try again!",
     USED_WORD: "used word try again!",
-    NOT_DICT_WORD:"Only Dictionary Words Allowed!" 
+    INVALID_WORD:"Enter Valid word!" 
  }
-
+ 
  module.exports=message;

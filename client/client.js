@@ -1,8 +1,9 @@
 var socket = io();
+
 const chainForm=document.querySelector('#chain-form');
 const onlineList=document.getElementById('online-users');
 const timerValue=document.getElementById('timer');
-const label=document.getElementById('word');
+const label=document.getElementById('word');       
 
 
 let start=true;
@@ -26,16 +27,18 @@ label.innerText=result;
 
 
 socket.on('onlineUsers',(onlineUsers)=>{
-onlineList.innerHTML=onlineUsers.map(user =>`<li><i style="color:#99b898" class="fas fa-user"></i>&nbsp${user.name}&nbsp<span id="score">(${user.score})</span>&nbsp&nbsp</li>`)
+onlineList.innerHTML=onlineUsers.map(user =>`<li><i class="fas fa-user"></i>${user.name}(${user.score})</li>`).join('')
+
 });
 
 
 function setTimer(timer){
      const interval= setInterval(()=>{
             timerValue.style.visibility="unset";
-            timer=timer-1;
             timerValue.innerText=timer;
-            if(timer===0){
+            timer=timer-1;
+            
+             if(timer===0){
             clearInterval(interval)
             socket.emit('done');
             start=true;
@@ -43,4 +46,3 @@ function setTimer(timer){
             }
             },1000);
 }
-
