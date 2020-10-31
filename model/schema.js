@@ -4,7 +4,6 @@ const mongoose =require('./db.js').getDb();
 const userSchema=new mongoose.Schema({
     name:{
         type:String,
-        required:true,
         },
       score:{
         type:Number,
@@ -13,8 +12,8 @@ const userSchema=new mongoose.Schema({
 })
 
 const statusSchema=new mongoose.Schema({
-    word:String,
-    used:Array
+    currWord:String,
+    usedWords:Array
 })
 
 const User=mongoose.model("user",userSchema);

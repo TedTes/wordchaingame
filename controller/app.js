@@ -38,7 +38,6 @@ result.then(user=>{
 
 io.on('connect',(socket)=>{
 const name=app.locals.name;
-
 getCurrentWord(name).then(currWord=>{
     if(currWord!==null)io.emit('mesg',(currWord));
 }).catch(error=>console.log(error));
@@ -48,7 +47,7 @@ updateOnlineUsers();
 
 socket.on('word',(word)=>{
 io.emit('timer',(timer));
- updateStatus(word,name).then(result=>{
+updateStatus(word,name).then(result=>{
 //track invalid words
 if(message[result]!==undefined){
     const msg=message[result]
@@ -63,25 +62,29 @@ if(message[result]!==undefined){
 });
 
 
-socket.on('done',async()=>{
-const user=await resetScore(name);
+socket.on('done',()=>{
+ resetScore(name).catch(e=>console.log(e));
   updateOnlineUsers();
   socket.emit('mesg',("Game Over!"));
 });
 
-socket.on('disconnect',async()=>{
-const user=await removeUser(name);
-if(user){
-socket.broadcast.emit('mesg',`${user} has left the game`)
-}
+socket.on('disconnect',()=>{
+ removeUser(name).then(user=>{
+    if(user){
+        socket.broadcast.emit('alert',`${name} has left the game!`)
+        updateOnlineUsers();
+        }
+ })
+
 if(socket.conn.server.clientsCount===0){
-await resetGame();
+resetGame().catch(e=>console.log(e));
 }
 });
 
 async function updateOnlineUsers(){
-onlineUsers=await getOnlineUsers();
-io.emit('onlineUsers',(onlineUsers));
+getOnlineUsers().then(onlineUsers=>{
+    io.emit('onlineUsers',(onlineUsers));
+}).catch(e=>console.log(e))
 }
 });
 
