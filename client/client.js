@@ -45,10 +45,9 @@ function setTimer(timer){
     const timerValue=facade.getElement('#timer')
      const interval= setInterval(()=>{
             timerValue.style.visibility="unset";
-            timerValue.innerText=timer;
             timer=timer-1;
-            
-             if(timer===0){
+            timerValue.innerText=timer;
+            if(timer<=0){
             clearInterval(interval)
             socket.emit('done');
             start=true;
